@@ -35,7 +35,7 @@
         <div class="col-lg-8">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title">Scan Qrcode Disini</h5>
               <div id="reader" style="max-height: 600px;"></div>
             </div>
           </div>
