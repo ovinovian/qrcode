@@ -10,4 +10,9 @@ class QrCodeController extends Controller
     {
       return view('qrcode');
     }
+
+    public function scan_qr()
+    {
+      return view('scan_qr');
+    }
 }

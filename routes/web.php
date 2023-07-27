@@ -33,6 +33,7 @@ Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 
 Route::get('/qrcode', [QrCodeController::class, 'index']);
+Route::get('/scan_qrcode', [QrCodeController::class, 'scan_qr']);
 
 Route::group(['middleware' => ['auth']], function() {
 
