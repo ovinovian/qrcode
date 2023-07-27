@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\OPDController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('opds', OPDController::class);
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 
