@@ -18,36 +18,36 @@
         }
 
         .image-wrapper {
-    position: relative;
-    display: inline-block;
-  }
+            position: relative;
+            display: inline-block;
+        }
 
-  .image-wrapper img {
-    position: absolute;
-    top: -40px;
-    left: 8px;
-  }
+        .image-wrapper img {
+            position: absolute;
+            top: -40px;
+            left: 8px;
+        }
 
-  .image-wrapper2 {
-    position: relative;
-    display: inline-block;
-  }
+        .image-wrapper2 {
+            position: relative;
+            display: inline-block;
+        }
 
-  .image-wrapper2 img {
-    position: absolute;
-    top: 60px;
-    left: 15px;
-  }
+        .image-wrapper2 img {
+            position: absolute;
+            top: 60px;
+            left: 15px;
+        }
 
-  .table-td {
-    width: 82pt;
-    border-left-style: solid;
-    border-left-width: 6pt;
-    border-left-color: #e3e3e3;
-    border-right-style: solid;
-    border-right-width: 6pt;
-    border-right-color: #e3e3e3;
-  }
+        .table-td {
+            width: 82pt;
+            border-left-style: solid;
+            border-left-width: 6pt;
+            border-left-color: #e3e3e3;
+            border-right-style: solid;
+            border-right-width: 6pt;
+            border-right-color: #e3e3e3;
+        }
 
         .s1 {
             color: #999;
@@ -124,8 +124,6 @@
             vertical-align: top;
             overflow: visible;
         }
-
-        
     </style>
 
     <title>Cetak Tiket Registrasi</title>
@@ -146,7 +144,7 @@
             <td style="
             width: 15pt; border-top-style: solid; border-top-width: 6pt; border-top-color: #e3e3e3; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" rowspan="11">
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
-                
+
             </td>
             <td style="width: 391pt; border-top-style: solid; border-top-width: 6pt;border-top-color: #e3e3e3; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
@@ -161,9 +159,9 @@
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td>
-                                <div class="image-wrapper2">
-                    <img src="https://dupak.babelprov.go.id/assets/images/users/logo_prov.png" width="82" height="102" alt="">
-                </div>
+                                    <div class="image-wrapper2">
+                                        <img src="https://dupak.babelprov.go.id/assets/images/users/logo_prov.png" width="82" height="102" alt="">
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -259,7 +257,7 @@
             <td style="
             width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
-                
+
             </td>
         </tr>
         <tr style="height: 5pt">
@@ -269,25 +267,23 @@
                     Instansi Peserta
                 </p>
             </td>
-            <td style="
-            width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
+            <td style="width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
             </td>
         </tr>
         <tr style="height: 13pt">
-            <td style="
-            width: 391pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
+            <td style="width: 391pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
                 <p class="s3" style="padding-left: 6pt;text-indent: 0pt;line-height: 8pt;text-align: left;margin-top:4px; margin-bottom:5px;">
                     Pemerintah Provinsi Kep. Bangka Belitung
                 </p>
             </td>
             <td style="
             width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
-            <div class="image-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png" width="100" height="100" alt="">
-            </div>
+                <div class="image-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png" width="100" height="100" alt="">
+                </div>
             </td>
-            
+
         </tr>
         <tr style="height: 45pt">
             <td style="

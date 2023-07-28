@@ -7,20 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <title>Babel</title>
 
     <!-- Bootstrap core CSS -->
+
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
 
     <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/templatemo-onix-digital.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
+
+    <style>
+        .select2-container--default .select2-selection--single {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        /* Atur border bottom */
+        .select2-container--default .select2-selection--single {
+            border-bottom: 1px solid #9cdbf8;
+            /* Ganti dengan warna dan ketebalan border sesuai keinginan Anda */
+        }
+    </style>
+    </style>
 
 </head>
 
@@ -222,7 +241,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="section-heading">
-                        <h2>Registrasi <em>Kehadiran</em> Menggunakan <span>Form</span> Berikut</h2>
+                        <h2>Registrasi <em>Peserta</em> Menggunakan <span>Form</span> Berikut</h2>
                         <div id="map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.2964903820052!2d107.626499675278!3d-2.72809323890244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e171678e4edd64b%3A0xa884c3843130a5d1!2sBW%20SUITE%20Belitung%20Hotel!5e0!3m2!1sid!2sid!4v1690279883064!5m2!1sid!2sid" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
                         </div>
@@ -234,26 +253,47 @@
                     </div>
                 </div>
                 <div class="col-lg-5 align-self-center">
-                    <form id="contact" action="" method="get">
+                    <form id="contact" name="registrasi" action="{{ route('registrasi') }}" method="post">
+                        @csrf
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <input type="name" name="name" id="name" placeholder="Name" autocomplete="on" required>
+                                    <input type="name" name="nama" id="name" placeholder="  Nama">
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>
+                                    <input type="text" name="nik" id="nik" placeholder="  NIK">
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                                    <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="  Email">
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <input type="text" name="website" id="website" placeholder="Your Website URL" required="">
+                                    <input type="text" name="no_hp" id="no_hp" placeholder="  No.HP">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12 mt-3 mb-5">
+                                <fieldset>
+                                    <!-- <input type="text" name="id_provinsi" id="provinsi" placeholder="Provinsi"> -->
+                                    <select name="id_provinsi" class="provinsi form-select @error('qrcode_id') is-invalid @enderror" id="provinsi">
+                                        <option value="">Provinsi</option>
+                                        <option value="1">Provinsi 1</option>
+                                        <option value="2">Provinsi 2</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12 mt-3 mb-5">
+                                <fieldset>
+                                    <select name="id_opd" class="opd form-control @error('qrcode_id') is-invalid @enderror" id="opd">
+                                        <option value="">Instansi</option>
+                                        <option value="1">Instansi 1</option>
+                                        <option value="2">Instansi 2</option>
+                                    </select>
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
@@ -362,7 +402,7 @@
                         </ul>
                     </div>
                 </div>
-               
+
                 <div class="col-lg-4">
                     <div class="subscribe-newsletters footer-item">
                         <h4>Hubungi Kami</h4>
@@ -389,10 +429,50 @@
     <!-- Scripts -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl-carousel.js') }}"></script>
     <script src="{{ asset('assets/js/animation.js') }}"></script>
     <script src="{{ asset('assets/js/imagesloaded.js') }}"></script>
+    <script src="{{ asset('vendor/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.form-validator.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.opd').select2({
+                placeholder: 'Instansi'
+            });
+            $('#provinsi').select2({
+                placeholder: 'Provinsi'
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("form[name='registrasi']").validate({
+                rules: {
+                    nama: "required",
+                    nik: "required",
+                    email: "required",
+                    no_hp: "required",
+                    id_provinsi: "required",
+                    id_opd: "required",
+                },
+                messages: {
+                    nama: "<span style='color: red; font-size:10px;'>Nama tidak boleh kosong</span>",
+                    nik: "<span style='color: red; font-size:10px;'>NIK tidak boleh kosong</span>",
+                    email: "<span style='color: red; font-size:10px;'>Email tidak boleh kosong</span>",
+                    no_hp: "<span style='color: red; font-size:10px;'>No HP tidak boleh kosong</span>",
+                    id_provinsi: "<span style='color: red; font-size:10px;'>Provinsi tidak boleh kosong</span>",
+                    id_opd: "<span style='color: red; font-size:10px;'>Instansi tidak boleh kosong</span>",
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
 
     <script>
         // Acc
@@ -412,6 +492,28 @@
                 $(".naccs ul").height(listItemHeight + "px");
             }
         });
+    </script>
+    <script>
+    <script>
+        @if($message = Session::get('success'))
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Selamat',
+            html: '{{ $message }}',
+            timer: 4000
+        })
+        @endif
+        @if($message = Session::get('error'))
+        Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Perhatian !!',
+            html: '{{ $message }}',
+            timer: 4000
+        })
+        @endif
+    </script>
     </script>
 </body>
 

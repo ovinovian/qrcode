@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OpdController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
@@ -29,8 +30,9 @@ Route::get('/tiket_peserta2', function () {
     return view('cetak_tiket_registrasi');
 });
 
-Route::get('/', [HomeController::class, 'landing_page']);
+Route::get('/', [HomeController::class, 'landing_page'])->name('home');
 Route::get('/tiket_peserta', [HomeController::class, 'tiket_registrasi']);
+Route::post('/registrasi', [HomeController::class, 'registrasi'])->name('registrasi');
 
 Route::resource('opds', OPDController::class);
 Route::resource('users', UserController::class);
