@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\OPDController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OpdController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
@@ -34,6 +35,9 @@ Route::get('/tiket_peserta', [HomeController::class, 'tiket_registrasi']);
 Route::resource('opds', OPDController::class);
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
+
+// Route::resource('auths', AuthController::class);
+Route::get('/login', [AuthController::class, 'login']);
 
 Route::get('/qrcode', [QrCodeController::class, 'index']);
 Route::get('/scan_qrcode', [QrCodeController::class, 'scan_qr']);
