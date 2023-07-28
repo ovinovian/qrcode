@@ -17,13 +17,32 @@
       display: flex;
       min-height: 100vh;
     }
-        #reader__scan_region img {
-      height: 150px;
+
+    #reader__scan_region img {
+      height: 250px;
     }
 
-    
+    #html5-qrcode-button-camera-start{
+      background-color: #22c55e;
+      border-radius: 10px;
+      border-color: #00c112;
+      color: #ffffff;
+      font-weight: bold;
+      padding: 10px 15px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
 
-    
+    #html5-qrcode-button-camera-stop {
+      background-color: #ef4444;
+      border-radius: 10px;
+      border-color: #dc2626;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 15px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
   </style>
 
 </head>
@@ -34,9 +53,16 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="card">
+
             <div class="card-body">
-              <h5 class="card-title">Scan Qrcode Disini</h5>
+            <audio id="successAudio" src="{{ asset('assets/music/access_granted.mp3') }}" preload="auto"></audio>
+              <h5 class="card-title text-center">Scan Qrcode Disini</h5>
               <div id="reader" style="max-height: 600px;"></div>
+              <div>
+                <p id="read-result">
+
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -52,7 +78,13 @@
   <script>
     function onScanSuccess(decodedText, decodedResult) {
       // handle the scanned code as you like, for example:
-      console.log(`Code matched = ${decodedText}`, decodedResult);
+        console.log(`Code matched = ${decodedText}`, decodedResult);
+
+        // Play the short music when QR code is successfully scanned
+        const successAudio = document.getElementById('successAudio');
+        successAudio.play();
+        
+        html5QrcodeScanner.pause();
     }
 
     function onScanFailure(error) {
@@ -65,8 +97,8 @@
       "reader", {
         fps: 10,
         qrbox: {
-          width: 250,
-          height: 250
+          width: 300,
+          height: 300
         }
       },
       /* verbose= */
