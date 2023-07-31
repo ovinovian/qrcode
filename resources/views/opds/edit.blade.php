@@ -57,7 +57,7 @@
                                             <li class="breadcrumb-item active">Starter</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">User</h4>
+                                    <h4 class="page-title">OPD</h4>
                                 </div>
                             </div>
                         </div>     
@@ -67,45 +67,26 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <a href="{{ route('users.create') }}" class="btn btn-info mb-8"><i class="mdi mdi-plus-circle-outline me-1"></i> Tambah User </a>
+                                        <h2 class="mb-3">Form Ubah OPD</h2>
                                         <div class="tab-content">
-                                            <div class="tab-pane show active" id="scroll-horizontal-preview">
-                                                <table class="table table-striped table-centered mb-0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Nama</th>
-                                                            <th>Email</th>
-                                                            <th>Hak Akses</th>
-                                                            <th>Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($data as $key => $user)
-                                                        <tr>
-                                                            <td class="table-user">{{ ++$i }}</td>
-                                                            <td class="table-user">{{ $user->name }}</td>
-                                                            <td class="table-user">{{ $user->email }}</td>
-                                                            <td class="table-user">
-                                                              @if(!empty($user->getRoleNames()))
-                                                                @foreach($user->getRoleNames() as $v)
-                                                                  <label class="badge badge-success">{{ $v }}</label>
-                                                                @endforeach
-                                                              @endif
-                                                            </td>
-                                                            <td class="table-action">
-                                                                <a href="{{ route('users.edit',$user->id) }}" class="action-icon"><i class="mdi mdi-pencil"></i></a>
-                                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                <button type="submit" class="action-icon"> <i class="mdi mdi-delete"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>                                                                                   
-                                            </div> <!-- end preview-->                                        
-                                           
+                                            <div class="tab-pane show active" id="input-types-preview">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <form action="{{ route('opds.update',$opd->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1" class="form-label">Nama OPD</label>
+                                                                <input type="text" class="form-control" name="nama_opd" value="{{ $opd->nama_opd }}" placeholder="Masukkan Nama OPD">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <a href="{{ route('opds.index') }}" class="btn btn-danger">Batal</a>
+                                                                <button type="submit" class="btn btn-primary">Ubah</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>                                       
                                         </div> <!-- end tab-content-->
 
                                     </div> <!-- end card body-->

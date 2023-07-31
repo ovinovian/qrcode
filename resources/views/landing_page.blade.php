@@ -9,6 +9,9 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/bds-apple.png') }}" rel="apple-touch-icon">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/img/bds-android.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <title>Diskominfo Babel KONREG PDRB-ISE</title>
@@ -305,8 +308,11 @@
                                     <!-- <input type="text" name="id_provinsi" id="provinsi" placeholder="Provinsi"> -->
                                     <select name="id_provinsi" class="provinsi form-select @error('qrcode_id') is-invalid @enderror" id="provinsi">
                                         <option value="">Provinsi</option>
-                                        <option value="1">Provinsi 1</option>
-                                        <option value="2">Provinsi 2</option>
+                                        @forelse ($provinsis as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_provinsi}}</option>
+                                        @empty
+                                        <option value="">Provinsi tidak ditemukan</option>
+                                        @endforelse
                                     </select>
                                 </fieldset>
                             </div>
@@ -314,8 +320,11 @@
                                 <fieldset>
                                     <select name="id_opd" class="opd form-control @error('qrcode_id') is-invalid @enderror" id="opd">
                                         <option value="">Instansi</option>
-                                        <option value="1">Instansi 1</option>
-                                        <option value="2">Instansi 2</option>
+                                        @forelse ($opds as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_opd}}</option>
+                                        @empty
+                                        <option value="">Instansi tidak ditemukan</option>
+                                        @endforelse
                                     </select>
                                 </fieldset>
                             </div>

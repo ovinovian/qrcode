@@ -38,7 +38,7 @@ class RegistrationTicket extends Notification
         return (new MailMessage)
                     ->subject('e-Tiket Peserta Kegiatan KONREG PDRB-ISE')
                     ->greeting('Selamat, '.$this->peserta->nama)
-                    ->line('Anda telah berhasil mendaftar pada kegiatan Konsultasi Regional Produk Domestik Regional Bruto (KONREG PDRB-ISE) Se-Sumatera Tahun 2023. Yang Akan diselenggarakan pada:')
+                    ->line('Anda telah berhasil mendaftar pada acara kegiatan Konsultasi Regional Produk Domestik Regional Bruto (KONREG PDRB-ISE) Se-Sumatera Tahun 2023. Yang Akan diselenggarakan pada:')
                     ->line('Tempat : Hotel BW Suite, Tanjung Pandan, Belitung')
                     ->line('Waktu  : O9 - 11 Agustus 2023')
                     ->action('Cetak Tiket Peserta', url('/tiket_peserta/'.$this->peserta->uuid))

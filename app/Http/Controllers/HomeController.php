@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Opd;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\Peserta;
+use App\Models\Provinsi;
 use Illuminate\Http\Request;
 use App\Notifications\RegistrationTicket;
 use Illuminate\Support\Str;
@@ -14,7 +16,13 @@ class HomeController extends Controller
 {
     public function landing_page() 
     {
-        return view('landing_page');
+        $provinsis = Provinsi::all();
+        $opds = Opd::all();
+
+        return view('landing_page', [
+            'provinsis' => $provinsis,
+            'opds' => $opds,
+        ]);
     }
 
     public function registrasi(Request $request) 
@@ -23,7 +31,7 @@ class HomeController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'nik' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'no_hp' => 'required',
             'id_provinsi' => 'required',
             'id_opd' => 'required',
@@ -64,9 +72,17 @@ class HomeController extends Controller
     {
         $peserta = Peserta::where('uuid', $uuid)->first();
         $qrcode = base64_encode(QrCode::format('svg')->size(90)->errorCorrection('H')->generate($peserta->uuid));
+
+        $provinsi = Provinsi::where('id', $peserta->id_provinsi)->first();
+        $nama_provinsi = Str::title($provinsi->nama_provinsi);
+
+        $opd = Opd::where('id', $peserta->id_opd)->first();
+
         $pdf = PDF::loadview('cetak_tiket_registrasi', [
             'peserta' => $peserta,
             'qrcode' => $qrcode,
+            'nama_provinsi' => $nama_provinsi,
+            'opd' => $opd
         ]);
         return $pdf->stream();
     }

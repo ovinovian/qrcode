@@ -39,8 +39,8 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Regards'),<br>
-{{ config('app.name') }}
+@lang('Hormat Kami'),<br>
+Diskominfo Provinsi Kepulauan Bangka Belitung
 @endif
 
 {{-- Subcopy --}}

@@ -126,7 +126,7 @@
         }
     </style>
 
-    <title>Cetak Tiket Registrasi</title>
+    <title>e-Tiket Registrasi Peserta</title>
 </head>
 
 <body>
@@ -272,12 +272,18 @@
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
             </td>
         </tr>
+        
         <tr style="height: 13pt">
             <td style="width: 391pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
                 <p class="s3" style="padding-left: 6pt;text-indent: 0pt;line-height: 8pt;text-align: left;margin-top:4px; margin-bottom:5px;">
-                    Pemerintah Provinsi Kep. Bangka Belitung
+                {{ $opd->nama_opd }}
                 </p>
+                <p class="s3" style="padding-left: 6pt;text-indent: 0pt;line-height: 8pt;text-align: left;margin-top:4px; margin-bottom:5px;">
+                Pemerintah Provinsi {{ $nama_provinsi }}
+                </p>
+                
             </td>
+
             <td style="
             width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
                 <div class="image-wrapper">
@@ -303,9 +309,9 @@
     </table>
 
     <p style="text-indent: 0pt; text-align: left"><br /></p>
-    <p style="text-indent: 0pt; text-align: left" />
-    <p style="text-indent: 0pt; text-align: left" />
-    <p style="text-indent: 0pt; text-align: left" />
+    <p style="text-indent: 0pt; text-align: left"></p>
+    <p style="text-indent: 0pt; text-align: left"></p>
+    <p style="text-indent: 0pt; text-align: left"></p>
     <p style="
         padding-top: 4pt;
         padding-left: 5pt;
