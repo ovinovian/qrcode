@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Babel</title>
+    <title>Diskominfo Babel KONREG PDRB-ISE</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -88,8 +88,30 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
+    @if (Session::has('success'))
+    <div class="alert alert-primary d-flex align-items-center text-center" style="z-index: 9999; margin-top:90px" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <div class="text-center">
+            Silahkan cek email untuk mengunduh e-tiket peserta KONREG PDRB-ISE
+        </div>
+    </div>
+    @endif
+    
+    @if (Session::has('error'))
+    <div class="alert alert-danger d-flex align-items-center text-center" style="z-index: 9999; margin-top:90px" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <div class="text-center">
+        {{Session::get('error')}}
+        </div>
+    </div>
+    @endif
+    
     <div class="main-banner" id="top">
+    
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -264,8 +286,9 @@
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <input type="text" name="nik" id="nik" placeholder="  NIK">
+                                    <input type="text" name="nik" id="nik" maxlength="16" placeholder="  NIK">
                                 </fieldset>
+                                <span id="error-nik" style="display:none;color:red;font-size:10px;"></span>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
@@ -449,6 +472,24 @@
     </script>
 
     <script>
+        $('#nik').keyup(function() {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+            var lengthNik = $(this).val().length;
+            if(lengthNik == 0) {
+            $('#error-nik').hide();
+            } else if(lengthNik > 0 && lengthNik <= 15) {
+            $('#error-nik').text("Nomor Identitas minimal 16 karakter angka").show();
+            } else {
+            $('#error-nik').hide();
+            }
+        });
+        $('#no_hp').keyup(function() {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+            
+        });
+    </script>
+
+    <script>
         $(document).ready(function() {
             $("form[name='registrasi']").validate({
                 rules: {
@@ -494,14 +535,13 @@
         });
     </script>
     <script>
-    <script>
         @if($message = Session::get('success'))
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Selamat',
+            title: 'Berhasil Registrasi',
             html: '{{ $message }}',
-            timer: 4000
+            timer: 15000
         })
         @endif
         @if($message = Session::get('error'))
@@ -510,11 +550,11 @@
             icon: 'warning',
             title: 'Perhatian !!',
             html: '{{ $message }}',
-            timer: 4000
+            timer: 5000
         })
         @endif
     </script>
-    </script>
+
 </body>
 
 </html>
