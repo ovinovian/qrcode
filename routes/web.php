@@ -34,12 +34,13 @@ Route::get('/', [HomeController::class, 'landing_page'])->name('home');
 Route::get('/tiket_peserta', [HomeController::class, 'tiket_registrasi']);
 Route::post('/registrasi', [HomeController::class, 'registrasi'])->name('registrasi');
 
-Route::resource('opds', OPDController::class);
+Route::resource('opds', OpdController::class);
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 
 // Route::resource('auths', AuthController::class);
 Route::get('/login', [AuthController::class, 'login']);
+// Route::get('/login', [AuthController::class, 'login']);
 
 Route::get('/qrcode', [QrCodeController::class, 'index']);
 Route::get('/scan_qrcode', [QrCodeController::class, 'scan_qr']);

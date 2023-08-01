@@ -1,72 +1,141 @@
-@extends('layouts.app')
+@extends('layouts.bungkus')
 
+@section('script')
+        <!-- third party css -->
+        <link href="{{ asset('assets/css/vendor/dataTables.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/vendor/responsive.bootstrap5.css') }}" rel="stylesheet" type="text/css">
+@endsection
 
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit New User</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back </a>
-        </div>
-    </div>
-</div>
+                <div class="content">
+                    <!-- Topbar Start -->
+                    <div class="navbar-custom">
+                        <ul class="list-unstyled topbar-menu float-end mb-0">
+                            
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span class="account-user-avatar"> 
+                                        <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
+                                    </span>
+                                    <span>
+                                        <span class="account-user-name">Soeng Souy</span>
+                                        <span class="account-position">Founder</span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                                    <!-- item-->
+                                    <div class=" dropdown-header noti-title">
+                                        <h6 class="text-overflow m-0">Welcome !</h6>
+                                    </div>
 
+                                    <<!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="mdi mdi-logout me-1"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </div>
+                            </li>
 
-@if (count($errors) > 0)
-  <div class="alert alert-danger">
-    <strong>Whoops!</strong> Something went wrong.<br><br>
-    <ul>
-       @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-       @endforeach
-    </ul>
-  </div>
-@endif
+                        </ul>
+                        <button class="button-menu-mobile open-left">
+                            <i class="mdi mdi-menu"></i>
+                        </button>
+                    </div>
+                    <!-- end Topbar -->
 
-<form action="{{ route('users.update', $user->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                <input type="text" name="name" value="{{ $user->name }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                <input type="email" name="email" value="{{ $user->email }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Password:</strong>
-                <input type="password" name="password" value="{{ $user->password }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Confirm Password:</strong>
-                <input type="password" name="confirm-password" value="{{ $user->password }}">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Role:</strong>
-                <select name="roles[]" id="" class="form-control multiple">
-                    @foreach ($roles as $role)
-                    <option value="{{ $role->name }}">{{ $role->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-</form>
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
+                                            <li class="breadcrumb-item active">Starter</li>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Role</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title --> 
 
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="mb-3">Form Ubah User</h2>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="input-types-preview">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <form action="{{ route('users.update', $user->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1" class="form-label">Name</label>
+                                                                <input type="text" class="form-control" name="name" value="{{ $user->name }}" placeholder="Masukkan Nama">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                                                <input type="text" class="form-control" name="email" value="{{ $user->email }}" placeholder="Masukkan Email">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1" class="form-label">Password</label>
+                                                                <input type="text" class="form-control" name="password" value="{{ $user->password }}" placeholder="Masukkan Password">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1" class="form-label">Confirm Password</label>
+                                                                <input type="password" class="form-control" name="confirm-password" value="{{ $user->password }}" placeholder="Masukkan Ulang Password">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1" class="form-label">Hak Akses</label>
+                                                                <select class="select2 form-control select2-multiple" name="roles[]" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                                                    @foreach ($roles as $role)
+                                                                    <option value="{{ $role }}">{{ $role }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <a href="{{ route('users.index') }}" class="btn btn-danger">Batal</a>
+                                                                <button type="submit" class="btn btn-primary">Ubah</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>                                       
+                                        </div> <!-- end tab-content-->
+
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        
+                    </div> <!-- container -->
+
+                </div>
+@endsection
+
+@section('script')
+        <!-- third party js -->
+        <script src="{{ asset('assets/js/vendor/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/dataTables.bootstrap5.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/responsive.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/buttons.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/buttons.flash.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/dataTables.keyTable.min.js') }}"></script>
+        <script src="{{ asset('assets/js/vendor/dataTables.select.min.js') }}"></script>
+        <!-- third party js ends -->
+
+        <!-- demo app -->
+        <script src="{{ asset('assets/js/pages/demo.datatable-init.js') }}"></script>
+        <!-- end demo js-->
 @endsection

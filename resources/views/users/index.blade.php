@@ -99,6 +99,7 @@
                                                                     @csrf
                                                                     @method('DELETE')
                                                                 <button type="submit" class="action-icon"> <i class="mdi mdi-delete"></i></button>
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                         @endforeach

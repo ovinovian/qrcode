@@ -30,7 +30,8 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id','DESC');
+        $roles = Role::orderBy('id','DESC')->get();
+        
         $i = 0;
         return view('roles.index',compact('roles','i'));
     }
@@ -58,7 +59,7 @@ class RoleController extends Controller
             'name' => 'required|unique:roles,name',
             'permission' => 'required',
         ]);
-    
+
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
     

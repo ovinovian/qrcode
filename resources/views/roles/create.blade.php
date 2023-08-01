@@ -1,56 +1,3 @@
-@extends('layouts.app')
-
-
-@section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Create New Role</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back </a>
-        </div>
-    </div>
-</div>
-
-
-@if (count($errors) > 0)
-  <div class="alert alert-danger">
-    <strong>Whoops!</strong>Something went wrong.<br><br>
-    <ul>
-       @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-       @endforeach
-    </ul>
-  </div>
-@endif
-
-
-<form action="{{ route('roles.store') }}" method="POST">
-    @csrf
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                <input type="text" class="form-control" name="name">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Permission:</strong>
-                @foreach($permission as $value)
-                <label><input type="checkbox" class="form-control" name="permission[]" value="{{ $value->id }}">{{ $value->name }}</label>
-                @endforeach
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-</form>
-
-@endsection
-
 @extends('layouts.bungkus')
 
 @section('script')
@@ -110,7 +57,7 @@
                                             <li class="breadcrumb-item active">Starter</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">OPD</h4>
+                                    <h4 class="page-title">Role</h4>
                                 </div>
                             </div>
                         </div>     
@@ -120,24 +67,25 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h2 class="mb-3">Form Tambah OPD</h2>
+                                        <h2 class="mb-3">Form Tambah Role</h2>
                                         <div class="tab-content">
                                             <div class="tab-pane show active" id="input-types-preview">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="{{ route('opds.store') }}" method="POST">
+                                                        <form action="{{ route('roles.store') }}" method="POST">
                                                             @csrf
                                                             <div class="mb-3">
-                                                                <label for="exampleInputEmail1" class="form-label">Nama OPD</label>
-                                                                <input type="text" class="form-control" name="nama_opd" placeholder="Masukkan Nama OPD">
+                                                                <label for="exampleInputEmail1" class="form-label">Role</label>
+                                                                <input type="text" class="form-control" name="name" placeholder="Masukkan Role">
                                                             </div>
-                                                            <div class="mb-3">
-                                                                @foreach($permission as $value)
-                                                                <label><input type="checkbox" class="form-control" name="permission[]" value="{{ $value->id }}">{{ $value->name }}</label>
-                                                                @endforeach
+                                                            @foreach($permission as $value)
+                                                            <div class="mb-3 form-check">
+                                                                <input type="checkbox" class="form-check-input" id="customCheckcolor1" name="permission[]" value="{{ $value->id }}">
+                                                                <label class="form-check-label" for="customCheckcolor1">{{ $value->name }}</label>
                                                             </div>
+                                                            @endforeach
                                                             <div class="mb-3">
-                                                                <a href="{{ route('opds.index') }}" class="btn btn-danger">Batal</a>
+                                                                <a href="{{ route('roles.index') }}" class="btn btn-danger">Batal</a>
                                                                 <button type="submit" class="btn btn-primary">Simpan</button>
                                                             </div>
                                                         </form>

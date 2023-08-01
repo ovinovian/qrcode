@@ -40,7 +40,8 @@
                         <p class="text-muted mb-4">Enter your email address and password to access account.</p>
 
                         <!-- form -->
-                        <form action="#">
+                        <form action="check-user" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="emailaddress" class="form-label">Email address</label>
                                 <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">

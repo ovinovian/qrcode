@@ -53,6 +53,7 @@ class OpdController extends Controller
 
     public function destroy(Opd $opd)
     {
+        dd($opd);
         $opd->delete();
 
         return redirect()->route('opds.index')

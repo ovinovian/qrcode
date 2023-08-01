@@ -78,15 +78,16 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($opds as $key => $opd)
+                                                        @foreach ($opds as $key => $opdnya)
                                                         <tr>
-                                                            <td class="table-user">{{ $opd->nama_opd}}</td>
+                                                            <td class="table-user">{{ $opdnya->id }} - {{ $opdnya->nama_opd}}</td>
                                                             <td class="table-action">
-                                                                <a href="{{ route('opds.edit',$opd->id) }}" class="action-icon"><i class="mdi mdi-pencil"></i></a>
-                                                                <form action="{{ route('opds.destroy',$opd->id) }}" method="POST">
+                                                                <a href="{{ route('opds.edit',$opdnya->id) }}" class="action-icon"><i class="mdi mdi-pencil"></i></a>
+                                                                <form action="{{ route('opds.destroy',$opdnya->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                 <button type="submit" class="action-icon"> <i class="mdi mdi-delete"></i></button>
+                                                                </form>
                                                             </td>
                                                         </tr>
                                                         @endforeach
