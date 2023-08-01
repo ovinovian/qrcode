@@ -24,7 +24,7 @@
 
         .image-wrapper img {
             position: absolute;
-            top: -40px;
+            top: -30px;
             left: 8px;
         }
 
@@ -35,7 +35,7 @@
 
         .image-wrapper2 img {
             position: absolute;
-            top: 60px;
+            top: 30px;
             left: 15px;
         }
 
@@ -126,7 +126,7 @@
         }
     </style>
 
-    <title>Cetak Tiket Registrasi</title>
+    <title>e-Tiket Registrasi Peserta</title>
 </head>
 
 <body>
@@ -171,8 +171,8 @@
         </tr>
         <tr style="height: 37pt">
             <td style="width: 391pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
-                <p class="s2" style="padding-left: 6pt;text-indent: 0pt;line-height: 12pt;text-align: left; margin-top:15px; margin-bottom:12px">
-                    Pelaksanaan Sosialisasi Evaluasi SPBE Tahun 2023 Pelaksanaan Sosialisasi Evaluasi SPBE Tahun 2023 Pelaksanaan Sosialisasi Evaluasi SPBE Tahun 2023 Evaluasi SPBE Tahun 2023
+                <p class="s2" style="padding-left: 6pt;text-indent: 0pt;line-height: 12pt;text-align: left; margin-top:10px; margin-bottom:12px">
+                Konsultasi Regional Produk Domestik Regional Bruto (KONREG PDRB-ISE) Se-Sumatera Tahun 2023
                 </p>
             </td>
         </tr>
@@ -183,7 +183,7 @@
                 </p>
             </td>
             <td style="width: 196pt; border-top-style: solid; border-top-width: 6pt; border-top-color: #e3e3e3; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
-                <p class="s1" style="padding-top: 3pt;text-indent: 0pt;line-height: 6pt;text-align: right;margin-right:5px"">
+                <p class="s1" style="padding-top: 3pt;text-indent: 0pt;line-height: 6pt;text-align: right;margin-right:5px;margin-top:8px;">
                     Lokasi
                 </p>
             </td>
@@ -192,24 +192,24 @@
             <td style="
             width: 195pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3; ">
                 <p class="s3" style="text-indent: 0pt; line-height: 5pt; text-align: right;margin-right:5px"">
-                    Senin, 12 Juni 2023
+                    O9 - 11 Agustus 2023
                 </p>
             </td>
             <td style=" width: 196pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
                 <p class="s3" style="text-indent: 0pt; line-height: 5pt; text-align: right;margin-right:5px">
-                    Video Conference
+                    Hotel BW Suite, Tanjung Pandan, Belitung
                 </p>
             </td>
         </tr>
         <tr style="height: 30pt">
             <td style="width: 195pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
-                <p class="s3" style="text-indent: 0pt; line-height: 8pt; text-align: right;margin-bottom:55px;margin-right:5px">
-                    09:00 WIB
+                <p class="s3" style="text-indent: 0pt; line-height: 8pt; text-align: right;margin-bottom:25px;margin-right:5px">
+                    s.d. selesai
                 </p>
             </td>
             <td style="width: 196pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
-                <p class="s3" style="text-indent: 0pt; line-height: 8pt; text-align: right;margin-right:5px"">
-                    zoom meeting
+                <p class="s3" style="text-indent: 0pt; line-height: 8pt; text-align: right;margin-right:5px">
+                    Provinsi Kep. Bangka Belitung
                 </p>
             </td>
         </tr>
@@ -229,15 +229,15 @@
             <td style="
             width: 391pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
                 <p class="s2" style="padding-left: 6pt;text-indent: 0pt;line-height: 12pt;text-align: left; margin-top:4px;">
-                    MUHAMMAD ERISCO NURRAHMAN
+                    {{ $peserta->nama }}
                 </p>
-                <p class="s3" style=" padding-left: 6pt;text-indent: 0pt;line-height: 7pt;text-align: left; margin-top:4px;">
-                    198810242007011001
+                <p class="s3" style=" padding-left: 6pt;text-indent: 0pt;line-height: 7pt;text-align: left; margin-top:6px;">
+                    {{ $peserta->nik }}
                 </p>
             </td>
             <td style="width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
-                <p class="s4" style="padding-left: 21pt; text-indent: 0pt; text-align: left">
+                <p class="s4" style="padding-left: 21pt; text-indent: 0pt; text-align: left; font-weight:bold">
                     Scan Here
                 </p>
             </td>
@@ -250,9 +250,10 @@
             border-right-style: solid;
             border-right-width: 6pt;
             border-right-color: #e3e3e3;" colspan="2">
-                <p class="s3" style="padding-left: 6pt;text-indent: 0pt;line-height: 5pt;text-align: left;margin-top:8px;">
+                <!-- <p class="s3" style="padding-left: 6pt;text-indent: 0pt;line-height: 5pt;text-align: left;margin-top:8px;">
                     KEPALA BIDANG E-GOVERNMENT DAN STATISTIK
-                </p>
+                </p> -->
+                <p style="text-indent: 0pt; text-align: left"><br /></p>
             </td>
             <td style="
             width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
@@ -271,16 +272,22 @@
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
             </td>
         </tr>
+        
         <tr style="height: 13pt">
             <td style="width: 391pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
                 <p class="s3" style="padding-left: 6pt;text-indent: 0pt;line-height: 8pt;text-align: left;margin-top:4px; margin-bottom:5px;">
-                    Pemerintah Provinsi Kep. Bangka Belitung
+                {{ $opd->nama_opd }}
                 </p>
+                <p class="s3" style="padding-left: 6pt;text-indent: 0pt;line-height: 8pt;text-align: left;margin-top:4px; margin-bottom:5px;">
+                Pemerintah Provinsi {{ $nama_provinsi }}
+                </p>
+                
             </td>
+
             <td style="
             width: 82pt; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;">
                 <div class="image-wrapper">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/800px-QR_code_for_mobile_English_Wikipedia.svg.png" width="100" height="100" alt="">
+                    <img src="data:image/png;base64, {!! $qrcode !!}" width="90" height="90">
                 </div>
             </td>
 
@@ -290,8 +297,8 @@
             width: 391pt; border-top-style: solid; border-top-width: 6pt; border-top-color: #e3e3e3; border-left-style: solid; border-left-width: 6pt; border-left-color: #e3e3e3; border-bottom-style: solid; border-bottom-width: 6pt; border-bottom-color: #e3e3e3; border-right-style: solid; border-right-width: 6pt; border-right-color: #e3e3e3;" colspan="2">
                 <p style="text-indent: 0pt; text-align: left"><br /></p>
                 <p style="padding-left: 140pt; text-indent: 0pt; text-align: left" />
-                <p class="s3" style="padding-left: 172pt;padding-right: 166pt;text-indent: 0pt;text-align: center;">
-                    33740277
+                <p class="s3" style="padding-left: 172pt;padding-right: 166pt;text-indent: 0pt;text-align: center; margin-bottom:10px">
+                    Nomor HP : {{ $peserta->no_hp }}
                 </p>
             </td>
             <td style="
@@ -302,9 +309,9 @@
     </table>
 
     <p style="text-indent: 0pt; text-align: left"><br /></p>
-    <p style="text-indent: 0pt; text-align: left" />
-    <p style="text-indent: 0pt; text-align: left" />
-    <p style="text-indent: 0pt; text-align: left" />
+    <p style="text-indent: 0pt; text-align: left"></p>
+    <p style="text-indent: 0pt; text-align: left"></p>
+    <p style="text-indent: 0pt; text-align: left"></p>
     <p style="
         padding-top: 4pt;
         padding-left: 5pt;

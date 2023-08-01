@@ -4,10 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Scanner Qrcode</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets/img/bds-apple.png') }}" rel="apple-touch-icon">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/img/bds-android.png') }}">
+  <title>Diskominfo Babel : Scanner Qrcode</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('vendor/sweetalert2/dist/sweetalert2.min.css') }}">
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/templatemo-onix-digital.css') }}">
@@ -54,10 +59,6 @@
       }
     }
 
-
-
-
-
     #html5-qrcode-button-camera-start {
       background-color: #22c55e;
       border-radius: 10px;
@@ -103,6 +104,8 @@
 
             <div class="card-body">
               <audio id="successAudio" src="{{ asset('assets/music/access_granted.mp3') }}" preload="auto"></audio>
+              <audio id="deniedAudio" src="{{ asset('assets/music/access_denied.mp3') }}" preload="auto"></audio>
+              <audio id="thankAudio" src="{{ asset('assets/music/thanks.mp3') }}" preload="auto"></audio>
               <h5 class="card-title text-center">Scan Qrcode Disini</h5>
               <div id="reader"></div>
               <div>
@@ -121,15 +124,71 @@
   <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('vendor/sweetalert2/dist/sweetalert2.all.min.js') }}"></script>
   <script src="{{ asset('assets/js/custom.js') }}"></script>
   <script>
     function onScanSuccess(decodedText, decodedResult) {
       // handle the scanned code as you like, for example:
-      console.log(`Code matched = ${decodedText}`, decodedResult);
+      // console.log(`Code matched = ${decodedText}`, decodedResult);
+      let uuid = decodedText;
+      //fetch api
+      $.ajax({
+        url: "{{ route('validasi-qr') }}",
+        type: "POST",
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content'),
+            uuid: uuid,
+        },
+
+        success: function(res) {
+          console.log(res);
+          if (res.success === true) {
+            const successAudio = document.getElementById('successAudio');
+            successAudio.play();
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Absen',
+            html: res.message,
+            timer: 8000
+            });
+
+
+
+          } else if(res.success == 'absen expired') {
+            const thankAudio = document.getElementById('thankAudio');
+            thankAudio.play();
+            Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Perhatian',
+            html: res.message,
+            timer: 8000
+            });
+
+          }else {
+            const deniedAudio = document.getElementById('deniedAudio');
+            deniedAudio.play();
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Absen',
+            html: res.message,
+            timer: 8000
+            });
+          }
+
+        },
+        error: function(res) {
+          
+          console.log(res)
+        }
+
+      });
 
       // Play the short music when QR code is successfully scanned
-      const successAudio = document.getElementById('successAudio');
-      successAudio.play();
+      
+      
 
       html5QrcodeScanner.pause();
     }
@@ -151,6 +210,8 @@
       /* verbose= */
       false);
     html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+    
   </script>
 </body>
 

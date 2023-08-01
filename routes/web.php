@@ -7,7 +7,7 @@ use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
-
+use App\Notifications\RegistrationTicket;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,8 +22,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('landing_page');
+// Route::get('/notif', function () {
+//     $order = App\Models\Peserta::find(1);
+//     return (new RegistrationTicket($order))
+//     ->toMail($order->user);
 // });
 
 Route::get('/tiket_peserta2', function () {
@@ -31,7 +33,7 @@ Route::get('/tiket_peserta2', function () {
 });
 
 Route::get('/', [HomeController::class, 'landing_page'])->name('home');
-Route::get('/tiket_peserta', [HomeController::class, 'tiket_registrasi']);
+Route::get('/tiket_peserta/{uuid}', [HomeController::class, 'tiket_registrasi']);
 Route::post('/registrasi', [HomeController::class, 'registrasi'])->name('registrasi');
 
 Route::resource('opds', OpdController::class);
@@ -42,8 +44,9 @@ Route::resource('roles', RoleController::class);
 Route::get('/login', [AuthController::class, 'login']);
 // Route::get('/login', [AuthController::class, 'login']);
 
-Route::get('/qrcode', [QrCodeController::class, 'index']);
+// Route::get('/qrcode', [QrCodeController::class, 'index']);
 Route::get('/scan_qrcode', [QrCodeController::class, 'scan_qr']);
+Route::post('/validasi_qrcode', [QrCodeController::class, 'validasi_qr'])->name('validasi-qr');
 
 Route::group(['middleware' => ['auth']], function() {
 

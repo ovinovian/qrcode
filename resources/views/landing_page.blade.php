@@ -9,9 +9,12 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('assets/img/bds-apple.png') }}" rel="apple-touch-icon">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/img/bds-android.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Babel</title>
+    <title>Diskominfo Babel KONREG PDRB-ISE</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -65,8 +68,8 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="assets/images/logo4.png">
+                        <a href="{{ url('/') }}" class="logo">
+                            <img src="{{ asset('assets/images/logo4.png') }}">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -88,8 +91,40 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
+    @if (Session::has('success'))
+    <div class="alert alert-primary d-flex align-items-center text-center" style="z-index: 9999; margin-top:90px" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <div class="text-center">
+            Silahkan cek email untuk mengunduh e-tiket peserta KONREG PDRB-ISE
+        </div>
+    </div>
+    @endif
+    
+    @if (Session::has('error'))
+    <div class="alert alert-danger d-flex align-items-center text-center" style="z-index: 9999; margin-top:90px" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <div class="text-center">
+        {{Session::get('error')}}
+        </div>
+    </div>
+    @endif
+    @error('email')
+        <div class="alert alert-danger d-flex align-items-center text-center" style="z-index: 9999; margin-top:90px" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <div class="text-center">
+            {{$message}}
+            </div>
+        </div>
+    @enderror
+    
     <div class="main-banner" id="top">
+    
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -137,7 +172,7 @@
     <div id="portfolio" class="our-portfolio section">
         <div class="container">
             <div class="services-left-dec">
-                <img src="assets/images/services-left-dec.png" alt="">
+                <img src="{{ asset('assets/images/services-left-dec.png') }}" alt="">
             </div>
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
@@ -154,10 +189,10 @@
                     <div class="owl-carousel owl-portfolio">
                         <div class="item">
                             <div class="thumb">
-                                <img src="assets/images/naruto.jpeg" alt="">
+                                <img src="{{ asset('assets/images/naruto.jpeg') }}" alt="">
                                 <div class="hover-effect">
                                     <div class="inner-content">
-                                        <a rel="sponsored" href="https://templatemo.com/tm-564-plot-listing" target="_parent">
+                                        <a href="">
                                             <h4>Uzumaki Naruto</h4>
                                         </a>
                                         <span class="five-lines">Konsep Negara Konoha Untuk keberlangsungan mahluk yang berguna</span>
@@ -167,7 +202,7 @@
                         </div>
                         <div class="item">
                             <div class="thumb">
-                                <img src="assets/images/naruto.jpeg" alt="">
+                                <img src="{{ asset('assets/images/naruto.jpeg') }}" alt="">
                                 <div class="hover-effect">
                                     <div class="inner-content">
                                         <a href="#">
@@ -180,10 +215,10 @@
                         </div>
                         <div class="item">
                             <div class="thumb">
-                                <img src="assets/images/naruto.jpeg" alt="">
+                                <img src="{{ asset('assets/images/naruto.jpeg') }}" alt="">
                                 <div class="hover-effect">
                                     <div class="inner-content">
-                                        <a rel="sponsored" href="https://templatemo.com/tm-562-space-dynamic" target="_parent">
+                                        <a href="#">
                                             <h4>Uzumaki Naruto</h4>
                                         </a>
                                         <span class="five-lines">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias ullam, eaque architecto sequi facere ut maiores pariatur magnam? Officiis, in sapiente. Sed harum a dolores itaque possimus et culpa fugit.</span>
@@ -193,7 +228,7 @@
                         </div>
                         <div class="item">
                             <div class="thumb">
-                                <img src="assets/images/naruto.jpeg" alt="">
+                                <img src="{{ asset('assets/images/naruto.jpeg') }}" alt="">
                                 <div class="hover-effect">
                                     <div class="inner-content">
                                         <a href="#">
@@ -206,7 +241,7 @@
                         </div>
                         <div class="item">
                             <div class="thumb">
-                                <img src="assets/images/naruto.jpeg" alt="">
+                                <img src="{{ asset('assets/images/naruto.jpeg') }}" alt="">
                                 <div class="hover-effect">
                                     <div class="inner-content">
                                         <a href="#">
@@ -219,7 +254,7 @@
                         </div>
                         <div class="item">
                             <div class="thumb">
-                                <img src="assets/images/naruto.jpeg" alt="">
+                                <img src="{{ asset('assets/images/naruto.jpeg') }}" alt="">
                                 <div class="hover-effect">
                                     <div class="inner-content">
                                         <a href="#">
@@ -247,15 +282,14 @@
                         </div>
 
                         <div class="info">
-                            <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
-                            <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
+                            <span><i class="fa fa-phone"></i> <a href="#">HP/WA: 081321619711<br>HP/WA: 082282920710</a></span>
+                            <span><i class="fa fa-envelope"></i> <a href="#">csdiskominfobabel@gmail.com<br>novriamsyahh@gmail.com</a></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 align-self-center">
                     <form id="contact" name="registrasi" action="{{ route('registrasi') }}" method="post">
                         @csrf
-
                         <div class="row">
                             <div class="col-lg-12">
                                 <fieldset>
@@ -264,13 +298,17 @@
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <input type="text" name="nik" id="nik" placeholder="  NIK">
+                                    <input type="text" name="nik" id="nik" maxlength="16" placeholder="  NIK">
                                 </fieldset>
+                                <span id="error-nik" style="display:none;color:red;font-size:10px;"></span>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
                                     <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="  Email">
                                 </fieldset>
+                                @error('email')
+                                    <span style="color:red;font-size:10px;">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
@@ -282,8 +320,11 @@
                                     <!-- <input type="text" name="id_provinsi" id="provinsi" placeholder="Provinsi"> -->
                                     <select name="id_provinsi" class="provinsi form-select @error('qrcode_id') is-invalid @enderror" id="provinsi">
                                         <option value="">Provinsi</option>
-                                        <option value="1">Provinsi 1</option>
-                                        <option value="2">Provinsi 2</option>
+                                        @forelse ($provinsis as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_provinsi}}</option>
+                                        @empty
+                                        <option value="">Provinsi tidak ditemukan</option>
+                                        @endforelse
                                     </select>
                                 </fieldset>
                             </div>
@@ -291,8 +332,11 @@
                                 <fieldset>
                                     <select name="id_opd" class="opd form-control @error('qrcode_id') is-invalid @enderror" id="opd">
                                         <option value="">Instansi</option>
-                                        <option value="1">Instansi 1</option>
-                                        <option value="2">Instansi 2</option>
+                                        @forelse ($opds as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_opd}}</option>
+                                        @empty
+                                        <option value="">Instansi tidak ditemukan</option>
+                                        @endforelse
                                     </select>
                                 </fieldset>
                             </div>
@@ -307,10 +351,10 @@
             </div>
         </div>
         <div class="contact-dec">
-            <img src="assets/images/contact-dec.png" alt="">
+            <img src="{{ asset('assets/images/contact-dec.png') }}" alt="">
         </div>
         <div class="contact-left-dec">
-            <img src="assets/images/contact-left-dec.png" alt="">
+            <img src="{{ asset('assets/images/contact-left-dec.png') }}" alt="">
         </div>
     </div>
 
@@ -319,23 +363,23 @@
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="left-image">
-                        <img src="assets/images/about-left-image.png" alt="Two Girls working together">
+                        <img src="{{ asset('assets/images/about-left-image.png') }}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="section-heading">
-                        <h2>Total <em>Peserta</em> &amp; <span>Pendaftar</span></h2>
+                        <h2>Total <em>Peserta</em> &amp; <span>Kehadiran</span></h2>
                         <p>Berikut Total Peserta yang mengikuti acara dan Total Pendaftar Aplikasi</p>
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="fact-item">
                                     <div class="count-area-content">
                                         <div class="icon">
-                                            <img src="assets/images/service-icon-04.png" alt="">
+                                            <img src="{{ asset('assets/images/service-icon-04.png') }}" alt="">
                                         </div>
-                                        <div class="count-digit">100</div>
+                                        <div class="count-digit">{{ $sumPeserta }}</div>
                                         <div class="count-title">Total Pendaftar</div>
-                                        <p>Lorem ipsum dolor sitti amet, consectetur.</p>
+                                        <p>Total Pendaftar KONREG PDRB-ISE</p>
                                     </div>
                                 </div>
                             </div>
@@ -343,11 +387,11 @@
                                 <div class="fact-item">
                                     <div class="count-area-content">
                                         <div class="icon">
-                                            <img src="assets/images/service-icon-04.png" alt="">
+                                            <img src="{{ asset('assets/images/service-icon-04.png') }}" alt="">
                                         </div>
-                                        <div class="count-digit">92</div>
-                                        <div class="count-title">Total Konfirmasi</div>
-                                        <p>Lorem ipsum dolor sitti amet, consectetur.</p>
+                                        <div class="count-digit">{{ $sumAbsen }}</div>
+                                        <div class="count-title">Total Peserta Hadir</div>
+                                        <p>Total peserta yang hadir acara KONREG PDRB-ISE</p>
                                     </div>
                                 </div>
                             </div>
@@ -355,11 +399,11 @@
                                 <div class="fact-item">
                                     <div class="count-area-content">
                                         <div class="icon">
-                                            <img src="assets/images/service-icon-04.png" alt="">
+                                            <img src="{{ asset('assets/images/service-icon-04.png') }}" alt="">
                                         </div>
-                                        <div class="count-digit">90</div>
-                                        <div class="count-title">Total Hadir</div>
-                                        <p>Lorem ipsum dolor sitti amet, consectetur.</p>
+                                        <div class="count-digit">{{ $sumTidakHadir }}</div>
+                                        <div class="count-title">Total Peserta Tidak Hadir</div>
+                                        <p>Total peserta yang hadir acara KONREG PDRB-ISE</p>
                                     </div>
                                 </div>
                             </div>
@@ -371,7 +415,7 @@
     </div>
 
     <div class="footer-dec">
-        <img src="assets/images/footer-dec.png" alt="">
+        <img src="{{ asset('assets/images/footer-dec.png') }}" alt="">
     </div>
 
     <footer>
@@ -382,12 +426,11 @@
                         <div class="logo">
                             <a href="#"><img src="assets/images/logo.png" alt="Onix Digital TemplateMo"></a>
                         </div>
-                        <a href="#">info@company.com</a>
+                        <a href="javascript:void(0);">Diskominfo Babel</a>
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/pemprovbabel?mibextid=ZbWKwL"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://instagram.com/diskominfobabel?igshid=MzRlODBiNWFlZA=="><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.youtube.com/@diskominfobangkabelitung3424"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -395,10 +438,10 @@
                     <div class="services footer-item">
                         <h4>Layanan</h4>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Acara</a></li>
-                            <li><a href="#">Informasi</a></li>
-                            <li><a href="#">Registrasi</a></li>
+                            <li><a href="#top">Home</a></li>
+                            <li><a href="#portfolio">Acara</a></li>
+                            <li><a href="#about">Informasi</a></li>
+                            <li><a href="#contact">Registrasi</a></li>
                         </ul>
                     </div>
                 </div>
@@ -415,7 +458,7 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="copyright">
-                        <p>Copyright © 2021 Onix Digital Co., Ltd. All Rights Reserved.
+                        <p>Copyright © diskominfo babel.
                             <br>
                             Designed by <a rel="nofollow" href="https://templatemo.com" title="free CSS templates">TemplateMo</a>
                         </p>
@@ -446,6 +489,24 @@
                 placeholder: 'Provinsi'
             });
         })
+    </script>
+
+    <script>
+        $('#nik').keyup(function() {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+            var lengthNik = $(this).val().length;
+            if(lengthNik == 0) {
+            $('#error-nik').hide();
+            } else if(lengthNik > 0 && lengthNik <= 15) {
+            $('#error-nik').text("Nomor Identitas minimal 16 karakter angka").show();
+            } else {
+            $('#error-nik').hide();
+            }
+        });
+        $('#no_hp').keyup(function() {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+            
+        });
     </script>
 
     <script>
@@ -494,14 +555,13 @@
         });
     </script>
     <script>
-    <script>
         @if($message = Session::get('success'))
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Selamat',
+            title: 'Berhasil Registrasi',
             html: '{{ $message }}',
-            timer: 4000
+            timer: 15000
         })
         @endif
         @if($message = Session::get('error'))
@@ -510,11 +570,11 @@
             icon: 'warning',
             title: 'Perhatian !!',
             html: '{{ $message }}',
-            timer: 4000
+            timer: 5000
         })
         @endif
     </script>
-    </script>
+
 </body>
 
 </html>
