@@ -18,10 +18,16 @@ class HomeController extends Controller
     {
         $provinsis = Provinsi::all();
         $opds = Opd::all();
+        $sumPeserta = DB::table('pesertas')->count();
+        $sumAbsen = DB::table('absens')->count();
+        $sumTidakHadir = $sumPeserta - $sumAbsen;
 
         return view('landing_page', [
             'provinsis' => $provinsis,
             'opds' => $opds,
+            'sumPeserta' => $sumPeserta,
+            'sumAbsen' => $sumAbsen,
+            'sumTidakHadir' => $sumTidakHadir
         ]);
     }
 
@@ -31,11 +37,15 @@ class HomeController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'nik' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email:rfc,dns',
             'no_hp' => 'required',
             'id_provinsi' => 'required',
             'id_opd' => 'required',
-        ]);
+        ],
+        [
+            'email.email' => 'Format Email harus sesuai'
+        ]
+        );
 
         $cek_nik = Peserta::where('nik', $request->nik)->count();
         $cek_email = Peserta::where('email', $request->email)->count();

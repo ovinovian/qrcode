@@ -59,10 +59,6 @@
       }
     }
 
-
-
-
-
     #html5-qrcode-button-camera-start {
       background-color: #22c55e;
       border-radius: 10px;
@@ -109,6 +105,7 @@
             <div class="card-body">
               <audio id="successAudio" src="{{ asset('assets/music/access_granted.mp3') }}" preload="auto"></audio>
               <audio id="deniedAudio" src="{{ asset('assets/music/access_denied.mp3') }}" preload="auto"></audio>
+              <audio id="thankAudio" src="{{ asset('assets/music/thanks.mp3') }}" preload="auto"></audio>
               <h5 class="card-title text-center">Scan Qrcode Disini</h5>
               <div id="reader"></div>
               <div>
@@ -159,6 +156,8 @@
 
 
           } else if(res.success == 'absen expired') {
+            const thankAudio = document.getElementById('thankAudio');
+            thankAudio.play();
             Swal.fire({
             position: 'center',
             icon: 'warning',
